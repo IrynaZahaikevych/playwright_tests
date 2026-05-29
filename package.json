@@ -1,0 +1,28 @@
+{
+	"name": "playwright_tests",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "playwright test",
+		"test:headed": "playwright test --headed",
+		"test:ui": "playwright test --ui",
+		"report": "playwright show-report"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/IrynaZahaikevych/playwright_tests.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"bugs": {
+		"url": "https://github.com/IrynaZahaikevych/playwright_tests/issues"
+	},
+	"homepage": "https://github.com/IrynaZahaikevych/playwright_tests#readme",
+	"devDependencies": {
+		"@playwright/test": "^1.60.0",
+		"@types/node": "^25.9.1"
+	}
+}
