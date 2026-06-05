@@ -23,6 +23,7 @@
 	"homepage": "https://github.com/IrynaZahaikevych/playwright_tests#readme",
 	"devDependencies": {
 		"@playwright/test": "^1.60.0",
-		"@types/node": "^25.9.1"
+		"@types/node": "^25.9.1",
+		"dotenv": "^17.4.2"
 	}
 }
