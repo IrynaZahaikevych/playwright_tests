@@ -1,7 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import * as dotenv from 'dotenv';
 
-// Завантажуємо змінні оточення з файлу .env
 dotenv.config();
 
 /**
@@ -22,10 +21,8 @@ export default defineConfig({
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
 	use: {
-		/* Значення беруться безпосередньо з вашого файлу .env */
 		baseURL: process.env.BASE_URL,
 
-		/* Автоматична HTTP Basic Auth через змінні оточення */
 		httpCredentials: {
 			username: process.env.HTTP_CREDENTIALS_USER,
 			password: process.env.HTTP_CREDENTIALS_PASS,
@@ -44,18 +41,26 @@ export default defineConfig({
 	/* Configure projects for major browsers */
 	projects: [
 		{
+			name: 'setup',
+			testMatch: /auth\.setup\.js/,
+		},
+
+		{
 			name: 'chromium',
 			use: { ...devices['Desktop Chrome'] },
+			dependencies: ['setup'],
 		},
 
 		{
 			name: 'firefox',
 			use: { ...devices['Desktop Firefox'] },
+			dependencies: ['setup'],
 		},
 
 		{
 			name: 'webkit',
 			use: { ...devices['Desktop Safari'] },
+			dependencies: ['setup'],
 		},
 	],
 });
