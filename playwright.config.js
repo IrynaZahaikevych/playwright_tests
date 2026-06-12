@@ -1,4 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
+
+// Завантажуємо змінні оточення з файлу .env
+dotenv.config();
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -18,13 +22,13 @@ export default defineConfig({
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
 	use: {
-		/* Base URL для вашого сайту, щоб у тестах писати просто await page.goto('/') */
-		baseURL: 'https://qauto.forstudy.space/',
+		/* Значення беруться безпосередньо з вашого файлу .env */
+		baseURL: process.env.BASE_URL,
 
-		/* Автоматична HTTP Basic Auth для всього проєкту*/
+		/* Автоматична HTTP Basic Auth через змінні оточення */
 		httpCredentials: {
-			username: 'guest',
-			password: 'welcome2qauto',
+			username: process.env.HTTP_CREDENTIALS_USER,
+			password: process.env.HTTP_CREDENTIALS_PASS,
 		},
 
 		/* Create screenshot automatically if the test fails */
