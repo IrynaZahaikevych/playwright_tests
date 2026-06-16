@@ -1,7 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import * as dotenv from 'dotenv';
 
-// Завантажуємо змінні оточення з файлу .env
 dotenv.config();
 
 /**
@@ -9,6 +8,9 @@ dotenv.config();
  */
 export default defineConfig({
 	testDir: './tests',
+
+	testMatch: '**/*.spec.js',
+
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -22,10 +24,8 @@ export default defineConfig({
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
 	use: {
-		/* Значення беруться безпосередньо з вашого файлу .env */
 		baseURL: process.env.BASE_URL,
 
-		/* Автоматична HTTP Basic Auth через змінні оточення */
 		httpCredentials: {
 			username: process.env.HTTP_CREDENTIALS_USER,
 			password: process.env.HTTP_CREDENTIALS_PASS,
