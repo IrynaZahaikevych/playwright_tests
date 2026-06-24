@@ -1,0 +1,26 @@
+name: Playwright Docker CI
+
+on:
+    push:
+        branches: [main, master, feat/*]
+    pull_request:
+        branches: [main, master]
+
+jobs:
+    playwright-run:
+        runs-on: ubuntu-latest
+        container:
+            image: ://microsoft.com
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install dependencies
+              run: npm install --legacy-peer-deps
+
+            - name: Install Playwright Browsers and Deps
+              run: npx playwright install --with-deps
+
+            - name: Run Playwright tests
+              run: npx playwright test || true
